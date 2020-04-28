@@ -1,5 +1,7 @@
 package com.employee.attendance.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class EmployeeAttendance {
 	
 	public void removeEmployee(@PathVariable int empId ) throws Exception {
 		
-		logger.info("deletion Req request for Employee " +empId);
+		logger.info("deletion Req request for Employee Attendance " +empId);
 		
 		attendanceService.removeEmployeeAttendance(empId);
 		
@@ -65,5 +67,13 @@ public class EmployeeAttendance {
 		attendanceService.attendanceUpdate(updatedAttendance, empId);
 		
 	}
+	
+	@RequestMapping(value="attendance/details/{empId}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<AttendanceDTO> getuserProductDetails(@PathVariable int empId)  {
+		logger.info(" fetching ATTENDANCE request for Employee {}", empId);
+		List <AttendanceDTO> attendanceDetails=attendanceService.getAttendance(empId);
+		return attendanceDetails;
+	}
+
 
 }

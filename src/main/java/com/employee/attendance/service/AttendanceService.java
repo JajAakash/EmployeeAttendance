@@ -1,6 +1,10 @@
 package com.employee.attendance.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,5 +39,20 @@ public class AttendanceService {
 	
 	public void removeEmployeeAttendance(int empId) {
 		attendanceRepository.deleteByempId(empId);
+	}
+	
+	public List<AttendanceDTO> getAttendance(int empId){
+		
+		List<Attendance> attendanceDetails=attendanceRepository.findByEmpId(empId);;
+		System.out.println("888888888888888888"+attendanceDetails);
+		if(attendanceDetails.size()==0) {return null;} 
+		else {
+			List<AttendanceDTO> attendanceData = new ArrayList();
+			
+			for(Attendance attendance : attendanceDetails) {
+				attendanceData.add(new AttendanceDTO().attendanceModel(attendance));
+				}
+			return attendanceData;
+			}
 	}
 }

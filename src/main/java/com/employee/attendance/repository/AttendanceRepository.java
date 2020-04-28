@@ -1,6 +1,8 @@
 package com.employee.attendance.repository;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,4 +21,9 @@ public interface  AttendanceRepository extends JpaRepository<Attendance, Integer
 	@Query("update Attendance at set at.availabilty = ?1 where at.date=?2 and at.empId = ?3")
 	
 	public int attendanceUpdate(String availabilty, LocalDate date, int empId);
+
+	List<Attendance> findByEmpId(int empId);
+
+
+	//Attendance findAllEmpId(int empId);
 }

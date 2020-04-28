@@ -82,4 +82,17 @@ public class AttendanceDTO {
 		return entity;
 		
 	}
+	
+	public AttendanceDTO attendanceModel(Attendance attendance) {
+		
+		AttendanceDTO attendanceDTO = new AttendanceDTO();
+		attendanceDTO.setAttendanceId(attendance.getAttendanceId());
+		attendanceDTO.setAvailabilty(attendance.getAvailabilty());
+		attendanceDTO.setDate(attendance.getDate());
+		attendanceDTO.setDay(attendance.getDay());
+		attendanceDTO.setInTime(attendance.getInTime());
+		attendanceDTO.setOutTime(attendance.getOutTime());
+		attendanceDTO.setEmpId(attendance.getEmpId());
+		return attendanceDTO;
+	}
 }
