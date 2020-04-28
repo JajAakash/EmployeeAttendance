@@ -30,7 +30,6 @@ public class AttendanceService {
 	}
 	
 	public int attendanceUpdate(AttendanceUpdateDTO updatedAttendanceDTO, int empId) {
-		// TODO Auto-generated method stub
 		
 		return attendanceRepository.attendanceUpdate(updatedAttendanceDTO.getAvailabilty(),updatedAttendanceDTO.getDate(), empId);
 		
