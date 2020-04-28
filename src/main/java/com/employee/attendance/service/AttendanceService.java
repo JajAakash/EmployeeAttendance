@@ -44,7 +44,6 @@ public class AttendanceService {
 	public List<AttendanceDTO> getAttendance(int empId){
 		
 		List<Attendance> attendanceDetails=attendanceRepository.findByEmpId(empId);;
-		System.out.println("888888888888888888"+attendanceDetails);
 		if(attendanceDetails.size()==0) {return null;} 
 		else {
 			List<AttendanceDTO> attendanceData = new ArrayList();
